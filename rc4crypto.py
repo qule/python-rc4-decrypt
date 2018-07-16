@@ -79,33 +79,34 @@ def rc4decode(openid):
 
 
 
+sheetlist = ["0705", "0706", "0707", "0708", "0709", "0710", "0711"]
 
-
-
-
-excel = xlrd.open_workbook('D:\数美验收_20180706_0-17.simplied.xlsx')
+excel = xlrd.open_workbook('D:\数美渠道_0705-0711.xlsx')
 wb = copy(excel)
 
-sheet_index = 0
+for sheet_index, sheeti in enumerate(sheetlist):
+    print(sheet_index, sheeti)
 
-sheet = excel.sheet_by_index(sheet_index)
-w_sheet = wb.get_sheet(sheet_index)
+    sheet = excel.sheet_by_index(sheet_index)
+    w_sheet = wb.get_sheet(sheet_index)
 
 
-nrows = sheet.nrows
-ncols = sheet.ncols
+    nrows = sheet.nrows
+    ncols = sheet.ncols
 
-writeCol = ncols + 1
+    writeCol = ncols + 1
 
-for i in range(nrows):
-    for j in range(ncols):
-        if j == 1:
-            openid = sheet.cell(i, j).value
-            ctype = 1
-            xf = 0
-            value = rc4decode(openid)
+    for i in range(nrows):
+        for j in range(ncols):
+            if j == 1:
+                openid = sheet.cell(i, j).value
+                print(openid)
 
-            # sheet.put_cell(i, writeCol, ctype, value, xf)
-            w_sheet.write(i, writeCol, value)
+                ctype = 1
+                xf = 0
+                value = rc4decode(openid)
 
-wb.save('D:\数美验收_20180706_0-17.simplied-out.xls')
+                # sheet.put_cell(i, writeCol, ctype, value, xf)
+                w_sheet.write(i, writeCol, value)
+
+    wb.save('D:\数美渠道_0705-0711-out.xls')
