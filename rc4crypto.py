@@ -79,9 +79,9 @@ def rc4decode(openid):
 
 
 
-sheetlist = ["0705", "0706", "0707", "0708", "0709", "0710", "0711"]
+sheetlist = ["shumei_20180723", "shumei_20180722", "shumei_20180721", "shumei_20180720", "shumei_20180719"]
 
-excel = xlrd.open_workbook('D:\数美渠道_0705-0711.xlsx')
+excel = xlrd.open_workbook('D:\shumei_20180719-20180723.xlsx')
 wb = copy(excel)
 
 for sheet_index, sheeti in enumerate(sheetlist):
@@ -109,4 +109,4 @@ for sheet_index, sheeti in enumerate(sheetlist):
                 # sheet.put_cell(i, writeCol, ctype, value, xf)
                 w_sheet.write(i, writeCol, value)
 
-    wb.save('D:\数美渠道_0705-0711-out.xls')
+    wb.save('D:\shumei_20180719-20180723-out.xls')
